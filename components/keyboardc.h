@@ -3,5 +3,5 @@
 
 #include "../component.h"
 
-Component new_keyboardc(void);
+Component new_keyboardc(int speed);
 #endif

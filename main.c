@@ -9,7 +9,10 @@
 #include "sprite.h"
 #include "entity.h"
 #include "player.h"
+#include "pet.h"
 #include "component.h"
+
+#include "components/petc.h"
 
 const unsigned char *keyboard;
 
@@ -65,10 +68,13 @@ int main(int argc, char **argv) {
     }
 
     delete_clear();
+
+    Entity *player = new_player(r, 512, 384);
+    add_entity(player);
+    Entity *pet = new_pet(r, 128, 128, PET_DEFAULT, ch_get(player->components, "position"));
+    add_entity(pet);
+    ch_insert(player->components, "pet", new_petc(pet));
     
-    add_entity(new_player(r, 512, 384));
-
-
     while (!done) {
         uint32_t start_time = SDL_GetTicks();
         SDL_Event e;
@@ -84,7 +90,7 @@ int main(int argc, char **argv) {
 
         for (int i = 0; i < 256 && entities[i]; i++) {
             ch_iter(entities[i]->components, update_components, entities[i]);
-            entities[i]->render->update(entities[i]->render, entities[i], 1000.0/60);
+            entities[i]->render.update(&entities[i]->render, entities[i], 1000.0/60);
         }
 //        printf("Done frame\n");
         delete_commit();

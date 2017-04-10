@@ -6,5 +6,5 @@ enum PetTypes {
     PET_DEFAULT
 };
     
-Entity *new_pet(SDL_Renderer *r, enum PetTypes type);
+Entity *new_pet(SDL_Renderer *r, int x, int y, enum PetTypes type, Component *owner);
 #endif

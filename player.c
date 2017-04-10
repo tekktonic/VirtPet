@@ -4,6 +4,9 @@
 #include "components/keyboardc.h"
 #include "sprite.h"
 
+void player_collide(Entity *self, Entity *other) {
+    if (other->)
+}
 Entity *new_player(SDL_Renderer *r, int x, int y) {
     Entity p;
     p.render = new_drawc(r, SS_CHARACTER, 7, 10);

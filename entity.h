@@ -20,4 +20,5 @@ void add_entity(Entity *e);
 
 void delete_entity(int id);
 void delete_clear(void);
+void delete_commit(void);
 #endif

@@ -31,7 +31,7 @@ static uint32_t hash(const char *string, uint32_t modvalue) {
     return h % modvalue;
 }
 
-void no_update(Component *self, Entity *e, int dt) {}
+void no_update(Component *self, struct Entity *e, int dt) {}
 void ch_delete(ComponentHash *h, char *string) {
     uint32_t offset = hash(string, BUCKET_SIZE);
 
